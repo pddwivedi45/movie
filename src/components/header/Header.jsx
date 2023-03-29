@@ -18,9 +18,9 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  useEffect(()=>{
+  useEffect(() => {
     window.scrollTo(0, 0);
-  },[location])
+  }, [location]);
 
   const controlNavbar = () => {
     if (window.scrollY > 200) {
@@ -35,12 +35,12 @@ const Header = () => {
     setLastScrollY(window.scrollY);
   };
 
-  useEffect(()=>{
-    window.addEventListener("scroll",controlNavbar);
-    return ()=>{
-      window.removeEventListener("scroll",controlNavbar)
-    }
-  },[lastScrollY])
+  useEffect(() => {
+    window.addEventListener("scroll", controlNavbar);
+    return () => {
+      window.removeEventListener("scroll", controlNavbar);
+    };
+  }, [lastScrollY]);
 
   const searchQueryHandler = (event) => {
     if (event.key === "Enter" && query.length > 0) {
@@ -55,6 +55,7 @@ const Header = () => {
     setMobileMenu(false);
     setShowSearch(true);
   };
+
   const openMobileMenu = () => {
     setMobileMenu(true);
     setShowSearch(false);
@@ -72,7 +73,7 @@ const Header = () => {
   return (
     <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper>
-        <div className="logo" onClick={()=>navigate("/")}>
+        <div className="logo" onClick={() => navigate("/")}>
           <img src={logo} alt="" />
         </div>
         <ul className="menuItems">
