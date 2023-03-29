@@ -27,6 +27,10 @@ const HeroBanner = () => {
       navigate(`/search/${query}`);
     }
   };
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log('The link was clicked.');
+  }
 
   return (
     <div className="heroBanner">
@@ -51,7 +55,7 @@ const HeroBanner = () => {
               onChange={(e) => setQuery(e.target.value)}
               onKeyUp={searchQueryHandler}
             />
-            <button>Search</button>
+            <button onClick={() => navigate(`/search/${query}`) }>Search</button>
           </div>
         </div>
       </ContentWrapper>
